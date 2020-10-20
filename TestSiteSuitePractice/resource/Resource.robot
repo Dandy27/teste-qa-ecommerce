@@ -29,3 +29,6 @@ Conferir se o produto "${PRODUTO}" foi listado no site
     Page Should Contain Image           css:a.product_img_link > img
     Page Should Contain Link            css:.right-block > h5 > a
     
+Conferir mensagem de erro "${MENSAGEMALERTA}"
+    Wait Until Element Is Visible      css:#center_column > p  
+    Element Text Should Be             css:#center_column > p       ${MENSAGEMALERTA}
