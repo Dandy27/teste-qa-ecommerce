@@ -15,3 +15,16 @@ Cenário de Teste 02 - Pesquisar produto inexistente
     Então a página deve exibir a mensagem "No results were found for your search "produtoNãoExistente""
       
 *** Keywords ***   
+
+Dado que estou na página home do site
+    Acessar a página home do site
+
+Quando eu pesquisar pelo produto "${PRODUTO}"
+    Digitar o nome de produto "${PRODUTO}" no campo de pesquisa
+    Clicar no botão pesquisar
+    
+Então o produto "${PRODUTO}" deve ser listado na página de resultado da busca    
+    Conferir se o produto "${PRODUTO}" foi listado no site
+
+Então a página deve exibir a mensagem "${MENSAGEMALERTA}"
+    Conferir mensagem de erro "${MENSAGEMALERTA}"
