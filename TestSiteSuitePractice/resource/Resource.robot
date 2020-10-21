@@ -3,8 +3,20 @@ Library            SeleniumLibrary
 
 
 *** Variables ***
-${BROWSER}    chrome
-${URL}        http://automationpractice.com/
+${BROWSER}        chrome
+${URL}            http://automationpractice.com/
+${EMAIL}          dandy28@gmail.com
+${PASSWORD}       798889498498
+${FIRST_NAME}     Daniel Barbosa
+${LAST_NAME}      Santos
+${ADRESS_01}      Nelson de Sousa Barbara 
+${CITY}           Campinas
+${STATE}          hawaii
+${ZIP_CODE}       00000
+${PHONE}          8989889890
+${COUNTRY}        united States
+
+
 
 *** Keywords ***
 Abrir navegador
@@ -77,6 +89,40 @@ Clicar no botão de remoção de produto do carrinho
 
 O sistema deve exibir a mensagem "${CART_MSN}"
     Element Text Should Not Be  css:#center_column > p      ${CART_MSN}
+
+Clicar no botão superior direito “Sign in”
+    Wait Until Element Is Visible       css:#header > div.nav
+    Click Element                       class=login
+
+A página para fazer login deve ser exibida
+    Wait Until Element Is Visible       id=center_column
+
+Inserir um e-mail "${EMAIL}" válido
+    Input Text                        id=email_create   ${EMAIL}
+
+Clicar no botão "Create na account"
+    Click Element                css:#SubmitCreate
+
+A página com os campos de cadastro deve ser exibida
+    Wait Until Element Is Visible      css:#customer_firstname
+
+Preencher os campos obrigatórios
+        Input Text             css:#passwd                  ${PASSWORD}
+        Input Text             css:#customer_firstname      ${FIRST_NAME}
+        Input Text             css:#customer_lastname       ${LAST_NAME}
+        Input Text             css:#address1                ${ADRESS_01}
+        Input Text             css:#city                    ${CITY}
+        Input Text             css:#postcode                ${ZIP_CODE}
+        Input Text             css:#phone_mobile            ${PHONE}
+        Press Keys             Xpath://*[@id="id_state"]    ${STATE}
+        Press Keys             Xpath://*[@id="id_country"]  ${COUNTRY}
+        
+Clicar em "Register"para finalizar o cadastro
+        Click Element          css:#submitAccount   
+
+A página de gerenciamento da conta deve ser exibida
+    Title Should Be         My account - My Store           
+
 
 
 
