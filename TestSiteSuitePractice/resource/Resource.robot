@@ -65,5 +65,21 @@ Clicar no botão "Proceed to checkout"
 A tela do carrinho de compras deve ser exibido, junto com os dados do produto e valores
     Wait Until Element Is Visible       css:div.columns-container
     
+Clicar no ícone carrinho de compras no menu superior direito
+    Click Element           css:#header > div:nth-child(3) > div > div > div:nth-child(3) > div > a
+
+A tela do carrinho de compras deve ser exibido
+    Wait Until Element Is Visible       css:#page > div.columns-container
+    
+Clicar no botão de remoção de produto do carrinho
+    Mouse Over          Xpath://*[@id="header"]/div[3]/div/div/div[3]/div/a/b
+    Click Element       Xpath://*[@id="header"]/div[3]/div/div/div[3]/div/div/div/div/dl/dt/span/a
+
+O sistema deve exibir a mensagem "${CART_MSN}"
+    Element Text Should Not Be  css:#center_column > p      ${CART_MSN}
+
+
+
+
 
 
