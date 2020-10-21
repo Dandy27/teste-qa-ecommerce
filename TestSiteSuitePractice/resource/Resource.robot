@@ -45,5 +45,25 @@ Clicar na sub categoria "${SUBCATEGORIA}"
 Uma página com os produtos da categoria selecionada deve ser exibida 
     Title Should Be                      Summer Dresses - My Store         
 
+Digitar o produto "${T_PRODUTO}" no campo de pesquisa
+    Input Text               css:#search_query_top     ${T_PRODUTO}    
+
+A página com os produtos da categoria selecionada deve ser exibida      
+    Wait Until Element Is Visible       css:#columns    
+    Page Should Contain Image           Xpath://*[@id="center_column"]/ul/li/div/div[1]/div/a[1]/img    
+    Page Should Contain Link            Xpath://*[@id="center_column"]/ul/li/div/div[2]/h5/a
+
+Clicar no botão "Add to cart" do produto
+    Click Element       css:#center_column > ul > li > div > div.right-block > div.button-container > a.button.ajax_add_to_cart_button.btn.btn-default > span
+
+Uma tela de confirmação deve ser exibida
+    Wait Until Element Is Visible       css:#layer_cart > div.clearfix
+
+Clicar no botão "Proceed to checkout"
+    Click Element                      css:#layer_cart div.button-container > a
+
+A tela do carrinho de compras deve ser exibido, junto com os dados do produto e valores
+    Wait Until Element Is Visible       css:div.columns-container
+    
 
 
